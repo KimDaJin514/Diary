@@ -26,18 +26,19 @@ class ViewController: UIViewController {
         print("일기 수 : \(self.diaryList.count)")
     }
     
-    private func configureCollectionView(){
-        self.collectionView.collectionViewLayout = UICollectionViewLayout()
-        self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+    private func configureCollectionView() {
+      self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+      self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+      self.collectionView.delegate = self
+      self.collectionView.dataSource = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let writeDiaryViewController = segue.destination as? WriteDiaryViewController {
-            writeDiaryViewController.delegate = self
-        }
+      if let wireDiaryViewContoller = segue.destination as? WriteDiaryViewController {
+        wireDiaryViewContoller.delegate = self
+      }
     }
+
     
 
     // 로컬 저장소에 저장
@@ -88,8 +89,7 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource {
     // cell에 표시할 섹션 개수 (다이어리 리스트 개수)
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("???? \(self.diaryList.count)")
-        return self.diaryList.count
+      return self.diaryList.count
     }
     
     // 컬렉션 뷰 지정된 위치에 표시할 셀을 요청하는 메서드
@@ -115,6 +115,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: (UIScreen.main.bounds.width / 2) - 20, height: 200)
     }
 }
+
 
 // 일기작성 화면에서 등록버튼 누르면 실행됨
 extension ViewController: WriteDiaryViewDelegate {

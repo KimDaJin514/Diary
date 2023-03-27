@@ -12,7 +12,7 @@ protocol WriteDiaryViewDelegate: AnyObject {
     func didSelectRegister(diary: Diary)
 }
 
-class WriteDiaryViewController: UIViewController, UITextViewDelegate {
+class WriteDiaryViewController: UIViewController {
 
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
@@ -112,7 +112,7 @@ class WriteDiaryViewController: UIViewController, UITextViewDelegate {
 }
 
 
-extension WriteDiaryViewController: UITableViewDelegate {
+extension WriteDiaryViewController: UITextViewDelegate {
     // textViewDidChange : textView에 text가 입력될 때마다 호출
     func textViewDidChange(_ textView: UITableView) {
         // 텍스트가 입력될 때마다 등록 버튼 활성화 여부 체크
